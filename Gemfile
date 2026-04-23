@@ -39,9 +39,33 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 
+  # Testing framework
+  gem "rspec-rails" # Replaces default Rails testing (Minitest)
+
+  # Test data setup
+  gem "factory_bot_rails" # Factories for cleaner test data
+  gem "faker" # Generate fake names, emails, etc.
+
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+end
+
+group :development do
+  # Code linting
+  gem "rubocop", require: false # Static code analysis
+  gem "rubocop-rails", require: false # Rails-specific linting rules
+
+  # Environment variables
+  gem "dotenv-rails" # Load ENV variables from .env file
+
+  # Debugging (already included by Rails in many cases)
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+end
+
+group :test do
+  # Test coverage reporting
+  gem "simplecov", require: false # Shows % of code covered by tests
 end
